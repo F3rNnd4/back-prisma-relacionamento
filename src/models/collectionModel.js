@@ -25,31 +25,21 @@ class CollectionModel {
     return personagem;
   }
 
-  // Criar um novo personagem
+  // Criar uma nova coleção
   async create(
-    title,
+    name,
     description,
-    episodes,
-    releaseYear,
-    studio,
-    genres,
-    rating,
-    imageUrl
+    releaseYear
   ) {
-    const newPersonagem = await prisma.personagem.create({
+    const newCollection = await prisma.collection.create({
       data: {
-        title,
+        name,
         description,
-        episodes,
         releaseYear,
-        studio,
-        genres,
-        rating,
-        imageUrl,
       },
     });
 
-    return newPersonagem;
+    return newCollection;
   }
 
   // Atualizar um personagem
