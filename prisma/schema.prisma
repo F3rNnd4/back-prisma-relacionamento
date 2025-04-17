@@ -43,3 +43,36 @@ model Personagem {
 
   @@map("personagens")
 }
+
+model Collection {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  description String?
+  releaseYear Int
+
+  // Segunda: marcação de dados da tabela dependente
+  cards Card[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("collections")
+}
+
+model Card {
+  id            Int     @id @default(autoincrement())
+  name          String  @unique
+  rarety        String
+  attackPoints  Int
+  defensePoints Int
+  imageUrl      String?
+
+  // Primeira configuração da tabela dependente
+  collectionId Int        @unique
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("cards")
+}
