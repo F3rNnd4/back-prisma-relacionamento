@@ -50,7 +50,7 @@ model Collection {
   description String?
   releaseYear Int
 
-  // Segunda: marcação de dados da tabela dependente
+  // Segunda: marcação de dados da tabela independente
   cards Card[]
 
   createdAt DateTime @default(now())
