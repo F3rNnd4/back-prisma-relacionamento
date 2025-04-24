@@ -36,8 +36,8 @@ class CardController {
       // Captura os dados do corpo da requisição
       const {
         name,
-        rarity,
-        attacksPoints,
+        rarety,
+        attackPoints,
         defensePoints,
         imageUrl,
         collectionId,
@@ -46,8 +46,8 @@ class CardController {
       // Verifica se todos os campos de cartas foram fornecidos
       if (
         !name ||
-        !rarity ||
-        !attacksPoints ||
+        !rarety ||
+        !attackPoints ||
         !defensePoints ||
         !collectionId
       ) {
@@ -60,8 +60,8 @@ class CardController {
       // Criar a nova carta
       const novaCarta = await CardModel.create(
         name,
-        rarity,
-        attacksPoints,
+        rarety,
+        attackPoints,
         defensePoints,
         imageUrl,
         collectionId
@@ -79,13 +79,14 @@ class CardController {
   }
 
   // PUT /carta/:id
-  async updateCollection(req, res) {
+  async updateCard(req, res) {
     try {
       const { id } = req.params;
+
       const {
         name,
-        rarity,
-        attacksPoints,
+        rarety,
+        attackPoints,
         defensePoints,
         imageUrl,
         collectionId,
@@ -93,9 +94,10 @@ class CardController {
 
       // Atualizar a carta
       const updatedCard = await CardModel.update(
+        id,
         name,
-        rarity,
-        attacksPoints,
+        rarety,
+        attackPoints,
         defensePoints,
         imageUrl,
         collectionId
@@ -113,7 +115,7 @@ class CardController {
   }
 
   // DELETE /carta/:id
-  async deleteCollection(req, res) {
+  async deleteCard(req, res) {
     try {
       const { id } = req.params;
 
@@ -132,4 +134,4 @@ class CardController {
   }
 }
 
-export default new CollectionController();
+export default new CardController();
