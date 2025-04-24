@@ -80,13 +80,13 @@ class CollectionModel {
 
   // Remover uma coleção
   async delete(id) {
-    const personagem = await this.findById(id);
+    const colecao = await this.findById(id);
 
-    if (!personagem) {
+    if (!colecao) {
       return null;
     }
 
-    await prisma.personagem.delete({
+    await prisma.collection.delete({
       where: {
         id: Number(id),
       },

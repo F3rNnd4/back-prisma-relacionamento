@@ -97,22 +97,23 @@ class CollectionController {
     }
   }
 
-  // DELETE /api/personagens/:id
-  async deletePersonagem(req, res) {
+  // DELETE /colecoes/:id
+  async deleteCollection(req, res) {
     try {
       const { id } = req.params;
 
-      // Remover o personagem
-      const result = await PersonagemModel.delete(id);
+      // Remover a coleção
+      const result = await  CollectionModel.delete(id);
 
       if (!result) {
-        return res.status(404).json({ error: "Personagem não encontrado" });
+        return res.status(404).json({ error: "Coleção não encontrada" });
       }
 
-      res.status(204).end(); // Resposta sem conteúdo
+      res.status(200).json({ message: "Coleção removida com sucesso!" });
+      
     } catch (error) {
-      console.error("Erro ao remover personagem:", error);
-      res.status(500).json({ error: "Erro ao remover personagem" });
+      console.error("Erro ao remover coleção:", error);
+      res.status(500).json({ error: "Erro ao remover coleção" });
     }
   }
 }
