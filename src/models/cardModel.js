@@ -56,6 +56,7 @@ class CardModel {
 
   // Atualizar uma carta
   async update(
+    id,
     name,
     rarety,
     attackPoints,
