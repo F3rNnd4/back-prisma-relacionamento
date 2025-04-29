@@ -1,6 +1,6 @@
 import e from "cors";
 import UserModel from "../models/userModel.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 class AuthController {
   // Listar todos os usuários
@@ -40,7 +40,7 @@ class AuthController {
       const data = {
         name,
         email,
-        passoword: hashedPassword,
+        password: hashedPassword,
       };
 
       // Criar o usuário
