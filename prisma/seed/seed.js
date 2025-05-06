@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-
 const prisma = new PrismaClient();
 
 async function main() {
@@ -22,7 +21,7 @@ async function main() {
     },
   });
 
-  console.log("Coleções criadas! Inserindo cards...");
+  console.log("Coleções criadas. Inserindo cards...");
 
   // Criar cards para Dragon Ball
   const dbCards = await Promise.all([
@@ -57,6 +56,7 @@ async function main() {
       },
     }),
   ]);
+
   // Criar cards para Naruto
   const narutoCards = await Promise.all([
     prisma.card.create({

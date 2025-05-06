@@ -40,7 +40,7 @@ class CardModel {
   // Criar uma nova carta
   async create(
     name,
-    rarety,
+    rarity,
     attackPoints,
     defensePoints,
     imageUrl,
@@ -49,7 +49,7 @@ class CardModel {
     const novaCarta = await prisma.card.create({
       data: {
         name,
-        rarety,
+        rarity,
         attackPoints,
         defensePoints,
         imageUrl,
@@ -64,7 +64,7 @@ class CardModel {
   async update(
     id,
     name,
-    rarety,
+    rarity,
     attackPoints,
     defensePoints,
     imageUrl,
@@ -83,7 +83,7 @@ class CardModel {
       },
       data: {
         name,
-        rarety,
+        rarity,
         attackPoints,
         defensePoints,
         imageUrl,

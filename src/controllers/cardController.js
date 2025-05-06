@@ -3,6 +3,12 @@ import CardModel from "../models/cardModel.js";
 class CardController {
   // GET /cartas
   async getAllCards(req, res) {
+    const pagina = req.query.page;
+    console.log("Página", pagina);
+    
+    const limite = req.query.limit;
+    console.log("Limite", limite);
+    
     try {
       const cartas = await CardModel.findAll();
       res.json(cartas);
@@ -36,7 +42,7 @@ class CardController {
       // Captura os dados do corpo da requisição
       const {
         name,
-        rarety,
+        rarity,
         attackPoints,
         defensePoints,
         imageUrl,
@@ -46,7 +52,7 @@ class CardController {
       // Verifica se todos os campos de cartas foram fornecidos
       if (
         !name ||
-        !rarety ||
+        !rarity ||
         !attackPoints ||
         !defensePoints ||
         !collectionId
@@ -60,7 +66,7 @@ class CardController {
       // Criar a nova carta
       const novaCarta = await CardModel.create(
         name,
-        rarety,
+        rarity,
         attackPoints,
         defensePoints,
         imageUrl,
@@ -85,7 +91,7 @@ class CardController {
 
       const {
         name,
-        rarety,
+        rarity,
         attackPoints,
         defensePoints,
         imageUrl,
@@ -96,7 +102,7 @@ class CardController {
       const updatedCard = await CardModel.update(
         id,
         name,
-        rarety,
+        rarity,
         attackPoints,
         defensePoints,
         imageUrl,

@@ -62,7 +62,7 @@ model Collection {
 model Card {
   id            Int     @id @default(autoincrement())
   name          String  @unique
-  rarety        String
+  rarity        String
   attackPoints  Int
   defensePoints Int
   imageUrl      String?
