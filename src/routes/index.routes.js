@@ -13,13 +13,12 @@ const router = express.Router();
 
 // Rotas públicas
 router.use('auth', authRouter);
+router.use('/collection', collectionRouter);
+router.use('/card', cardRouter)
 
 // Rotas protegidas
 router.use(authMiddleware);
-
 router.use('/anime', animeRouter);
 router.use('/personagem', personagemRouter);
-router.use('/collection', collectionRouter);
-router.use('/card', cardRouter)
 
 export default router;
