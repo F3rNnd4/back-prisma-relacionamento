@@ -10,8 +10,10 @@ class CardController {
     const page = req.query.page || 1;
     const limit = req.query.limit || 10;
 
+    const name = req.query.name;
+
     try {
-      const cartas = await CardModel.findAll(rarity, attack, page, limit);
+      const cartas = await CardModel.findAll(rarity, attack, page, limit, name);
       res.json(cartas);
     } catch (error) {
       console.error("Erro ao buscar as cartas:", error);
