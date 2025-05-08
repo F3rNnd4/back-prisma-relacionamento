@@ -4,6 +4,19 @@ class CardModel {
   // Obter todas as cartas
   async findAll() {
     const cartas = await prisma.card.findMany({
+      // where: {
+      //   rarity: "Ultra Rare",
+      // },
+      // where: {
+      //   defensePoints: {
+      //     lte: 8000,
+      // },
+      //   },
+      where: {
+        attackPoints: {
+          gte: 8000,
+        },
+      },
       orderBy: {
         createdAt: "desc",
       },
@@ -12,8 +25,8 @@ class CardModel {
           select: {
             name: true,
             description: true,
-            releaseYear: true
-          }
+            releaseYear: true,
+          },
         },
       },
     });
