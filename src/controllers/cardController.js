@@ -4,12 +4,14 @@ class CardController {
   // GET /cartas
   async getAllCards(req, res) {
     const rarity = req.query.rarity;
-    console.log("Raridade:", rarity);
-    
+
     const attack = req.query.attack;
-    
+
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 10;
+
     try {
-      const cartas = await CardModel.findAll(rarity, attack);
+      const cartas = await CardModel.findAll(rarity, attack, page, limit);
       res.json(cartas);
     } catch (error) {
       console.error("Erro ao buscar as cartas:", error);
